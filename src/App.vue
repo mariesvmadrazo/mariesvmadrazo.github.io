@@ -48,9 +48,6 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import FrontPage from './components/FrontPage.vue'
-
 export default {
   name: 'App',
   // components: {
