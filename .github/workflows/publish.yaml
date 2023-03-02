@@ -1,4 +1,4 @@
-name: Publish to portfolio
+name: Publish
 
 on:
   repository_dispatch:
