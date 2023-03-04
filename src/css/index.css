@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@font-face {
+    font-family: Slimlight;
+    src: local('Lato'), url(../assets/fonts/Slimlight.ttf);
+}
+@tailwind utilities;
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";

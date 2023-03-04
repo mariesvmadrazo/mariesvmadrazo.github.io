@@ -1,60 +1,67 @@
 <template>
-  <div id="hello-wrapper">
-    <h1 class="header">
-      Hello! <font-awesome-icon icon="fa-hand"></font-awesome-icon>
-    </h1>
-    <h1 class="header">
-      I'm Maries Madrazo.
-    </h1>
-    <p class="transition">Electronics engineer turned front-end developer intrigued by food, online games, and good conversations.</p>
-    <div id="pic-1">
-      <img src="./assets/girl-avatar.png" />
+  <div class="relative w-full h-full select-none">
+  <NavBar :short-cuts="shortCuts"></NavBar>
+  <div class="text-black flex flex-col">
+    <div id="hello-wrapper" class="container flex flex-col items-center justify-center w-full mx-auto my-60 md:flex-row">
+      <div class="intro">
+        <div class="text-4xl">Hello! <font-awesome-icon icon="fa-hand"></font-awesome-icon>
+        </div>
+        <div class="text-4xl">I'm Maries Madrazo.</div>
+        <div class="text-xl w-70 md:w-80">Electronics engineer turned front-end developer intrigued by food, online games, and good conversations.</div>
+        </div>
+    <div id="pic-1" class="overflow-hidden rounded-full max-w-xs w-5/12 ml-0 mt-5 md:ml-10 md:mt-0">
+      <img class="w-full" src="./assets/girl-avatar.png" />
     </div>
   </div>
-  <div id="skills-wrapper">
-    <h2>Skills</h2>
-    <h4 id="front-end-skills">Front End</h4>
-    <div class="skills">
-      <div class="skill" v-for="(skill, i) in skills.frontEnd" :key="`front-end-skill-${i+1}`"><p1>{{ skill.name }}</p1></div>
+  <div id="skills-wrapper" class="flex flex-col items-center justify-center px-12 md:px-48 w-full mx-auto my-60">
+    <div class="text-2xl">Skills</div>
+    <div id="front-end-skills" class="text-xl">Front End</div>
+    <div class="skills flex flex-wrap text-md justify-center">
+      <div class="skill text-xs md:text-sm tag bg-darkViolet text-white mr-2 mb-2 rounded-3xl flex-shrink-0 capitalize inline-flex flex-row items-center p-1.5 pr-3" v-for="(skill, i) in skills.frontEnd" :key="`front-end-skill-${i+1}`"><img class="rounded-full w-8 mr-2 shadow-lg inline" :src="`${publicPath}${skill.img}`" /><span>{{ skill.name }}</span></div>
     </div>
-    <h4 id="back-end-skills">Back End</h4>
-    <div class="skills">
-      <div class="skill" v-for="(skill, i) in skills.backEnd" :key="`back-end-skill-${i+1}`"><p1>{{ skill.name }}</p1></div>
+    <div id="back-end-skills" class="text-xl">Back End</div>
+    <div class="skills flex flex-wrap text-md justify-center">
+      <div class="skill text-xs md:text-sm tag bg-darkViolet text-white mr-2 mb-2 rounded-3xl flex-shrink-0 capitalize inline-flex flex-row items-center p-1.5 pr-3" v-for="(skill, i) in skills.backEnd" :key="`back-end-skill-${i+1}`"><img class="rounded-full w-8 mr-2 shadow-lg inline" :src="`${publicPath}${skill.img}`" /><span>{{ skill.name }}</span></div>
     </div>
   </div>
-  <div id="portfolio-wrapper">
-    <h2>Portfolio</h2>
+  <div id="portfolio-wrapper" class="flex flex-col items-center justify-center w-full mx-auto my-60">
+    <div class="text-2xl">Portfolio</div>
     Ongoing . . .
   </div>
-  <div id="footer-wrapper">
-    <div id="contact-me-wrapper">
-      <h2>Contact Me</h2>
+  <div class="flex flex-col p-4 md:justify-evenly p-8 md:flex-row w-full bg-darkViolet text-white space-y-4 md:space-y-0">
+    <div class="slimelight text-7xl text-white md:pr-20">mvm</div>
+    <div class="flex flex-col">
+      <div class="text-3xl">Contact Me</div>
       <div class="contact" v-for="(c,i) in contact" :key="`c-${i+1}`">
-        <font-awesome-icon :icon="c.icon"></font-awesome-icon>
-        {{ c.text }}
+        <div>
+          <font-awesome-icon :icon="c.icon"></font-awesome-icon>
+          <span>{{ c.text }}</span>
+        </div>
       </div>
     </div>
-    <div id="socials-wrapper">
-      <h2>Socials</h2>
-      <div class="social" v-for="(s,i) in socials" :key="`s-${i+1}`">
-        <a :href="s.link" target="_blank">
-          <img :src="`${publicPath}${s.img}`"/>
-        </a>
+    <div class="flex flex-col">
+      <div class="text-3xl">Socials</div>
+      <div class="flex flex-column justify-center">
+        <div class="flex social w-10 overflow-hidden rounded-full" v-for="(s,i) in socials" :key="`s-${i+1}`">
+          <a :href="s.link" target="_blank">
+            <img class="w-full" :src="`${publicPath}${s.img}`"/>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-  <!-- <HelloWorld />
-  <FrontPage /> -->
+  </div>
+  </div>
 </template>
 
 <script>
+import NavBar from './components/Navbar.vue'
 
 export default {
   name: 'App',
-  // components: {
-  //   HelloWorld
-  //   // FrontPage
-  // },
+  components: {
+    NavBar
+  },
   data () {
     return {
       publicPath: process.env.BASE_URL,
@@ -62,41 +69,45 @@ export default {
         frontEnd: [
           {
             name: 'HTML5',
-            img: '',
+            img: 'skills/html5.png',
           },
           {
             name: 'CSS3',
-            img: '',
+            img: 'skills/css3.png',
           },
           {
             name: 'Javascript',
-            img: '',
+            img: 'skills/javascript.png',
           },
           {
             name: 'Bootstrap',
-            img: '',
+            img: 'skills/bootstrap.png',
           },
           {
             name: 'Vue',
-            img: '',
+            img: 'skills/vue.png',
           },
           {
             name: 'Vuex',
-            img: '',
+            img: 'skills/vuex.png',
           },
           {
-            name: 'Nuxt.js',
-            img: '',
+            name: 'Nuxt',
+            img: 'skills/nuxtjs.png',
+          },
+          {
+            name: 'Tailwind CSS',
+            img: 'skills/tailwindcss.png'
           }
         ],
         backEnd: [
           {
             name: 'C#',
-            img: '',
+            img: 'skills/c-sharp.png',
           },
           {
             name: 'MS SQL',
-            img: '',
+            img: 'skills/mssql.png',
           }
         ]
       },
@@ -119,6 +130,28 @@ export default {
           img: 'socials/linkedin.png',
           link: 'https://www.linkedin.com/in/mariesmadrazo/'
         }
+      ],
+      shortCuts: [
+        {
+          name: "About",
+          link: "about",
+          icon: ""
+        },
+        {
+          name: "Projects",
+          link: "projects",
+          icon: ""
+        },
+        {
+          name: "Skills",
+          link: "skills",
+          icon: ""
+        },
+        {
+          name: "Portfolio",
+          link: "portfolio",
+          icon: ""
+        },
       ]
     }
   }
@@ -133,7 +166,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   scroll-behavior: smooth;
   background-color: #eceac2;
   background-attachment: fixed;
@@ -147,74 +179,15 @@ html {
   background-size: cover;
 }
 
-#hello-wrapper, #skills-wrapper {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30vh 30vw 0 30vw;
-}
-
-#pic-1 {
-  height: 15vh;
-  width: 15vh;
-  border-radius: 100px;
-  overflow: hidden;
-}
-#pic-1 img {
-  width: 100%;
-}
-
-.skills {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .skill {
-  background-color: #2c3e50;
+  background-color: #F25354;
   color: white;
-  margin: 1vh 1vw;
-  padding: 1vh 1vw
+
 }
 
-#footer-wrapper {
-  width: 100%;
-  height: 20vh;
-  padding: 2vh 2vw;
-  background-color: #2c3e50;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box
-}
-#contact-me-wrapper,
-#socials-wrapper {
-  width: 50%;
+
+.slimelight {
+  font-family: Slimlight;
 }
 
-#socials-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-}
-#socials-wrapper h2 {
-  width: 100%
-}
-.social {
-  width: 3vw;
-  height: 3vw;
-  border-radius: 100px;
-  overflow: hidden
-}
-.social img {
-  width: 100%;
-}
-
-.transition {
-  opacity: 1;
-  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  transition: opacity 2s cubic-bezier(0.5, 0, 0, 1) 0.4s, transform 2s cubic-bezier(0.5, 0, 0, 1) 0.4s;
-}
 </style>
