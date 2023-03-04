@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full h-full select-none">
-  <NavBar :short-cuts="shortCuts"></NavBar>
-  <div class="text-black flex flex-col">
+  <NavBar :short-cuts="shortCuts" :isMenuActive="isMenuActive" @on-toggle-menu="isMenuActive = $event" @short-cut="scrollToElement($event)"></NavBar>
+  <div id="about" class="text-black flex flex-col">
     <div id="hello-wrapper" class="container flex flex-col items-center justify-center w-full mx-auto my-60 md:flex-row">
       <div class="intro">
         <div class="text-4xl">Hello! <font-awesome-icon icon="fa-hand"></font-awesome-icon>
@@ -13,7 +13,7 @@
       <img class="w-full" src="./assets/girl-avatar.png" />
     </div>
   </div>
-  <div id="skills-wrapper" class="flex flex-col items-center justify-center px-12 md:px-48 w-full mx-auto my-60">
+  <div id="skills" class="flex flex-col items-center justify-center px-12 md:px-48 w-full mx-auto py-60">
     <div class="text-2xl">Skills</div>
     <div id="front-end-skills" class="text-xl">Front End</div>
     <div class="skills flex flex-wrap text-md justify-center">
@@ -24,24 +24,31 @@
       <div class="skill text-xs md:text-sm tag bg-darkViolet text-white mr-2 mb-2 rounded-3xl flex-shrink-0 capitalize inline-flex flex-row items-center p-1.5 pr-3" v-for="(skill, i) in skills.backEnd" :key="`back-end-skill-${i+1}`"><img class="rounded-full w-8 mr-2 shadow-lg inline" :src="`${publicPath}${skill.img}`" /><span>{{ skill.name }}</span></div>
     </div>
   </div>
-  <div id="portfolio-wrapper" class="flex flex-col items-center justify-center w-full mx-auto my-60">
+  <div id="portfolio" class="flex flex-col items-center justify-center w-full mx-auto py-60">
     <div class="text-2xl">Portfolio</div>
     Ongoing . . .
   </div>
-  <div class="flex flex-col p-4 md:justify-evenly p-8 md:flex-row w-full bg-darkViolet text-white space-y-4 md:space-y-0">
-    <div class="slimelight text-7xl text-white md:pr-20">mvm</div>
-    <div class="flex flex-col">
+  <div class="flex flex-col py-4 px-20 w-full bg-darkViolet justify-items-stretch text-white space-y-4 md:space-y-0 md:justify-start md:flex-row">
+    <div class="slimelight text-7xl text-white justify-self-start">mvm</div>
+    <div class="flex flex-col justify-center md:mr-96">
       <div class="text-3xl">Contact Me</div>
       <div class="contact" v-for="(c,i) in contact" :key="`c-${i+1}`">
         <div>
           <font-awesome-icon :icon="c.icon"></font-awesome-icon>
-          <span>{{ c.text }}</span>
+          <span class="pl-2">{{ c.text }}</span>
         </div>
       </div>
     </div>
-    <div class="flex flex-col">
+    <div class="flex flex-col hidden md:block px-36">
+      <div class="flex flex-col justify-center">
+        <div class="flex social cursor-pointer" v-for="(shortCut,i) in shortCuts" :key="`s-${i+1}`">
+          <div class="text-lg" @click="scrollToElement(shortCut.link)">{{ shortCut.name }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col align-self-end">
       <div class="text-3xl">Socials</div>
-      <div class="flex flex-column justify-center">
+      <div class="flex justify-center">
         <div class="flex social w-10 overflow-hidden rounded-full" v-for="(s,i) in socials" :key="`s-${i+1}`">
           <a :href="s.link" target="_blank">
             <img class="w-full" :src="`${publicPath}${s.img}`"/>
@@ -124,7 +131,7 @@ export default {
       socials: [
         {
           img: 'socials/github.png',
-          link: 'https://github.com/mavmaz'
+          link: 'https://github.com/mariesvmadrazo'
         },
         {
           img: 'socials/linkedin.png',
@@ -138,11 +145,6 @@ export default {
           icon: ""
         },
         {
-          name: "Projects",
-          link: "projects",
-          icon: ""
-        },
-        {
           name: "Skills",
           link: "skills",
           icon: ""
@@ -152,7 +154,15 @@ export default {
           link: "portfolio",
           icon: ""
         },
-      ]
+      ],
+      isMenuActive: false
+    }
+  },
+  methods: {
+    scrollToElement(elementId) {
+      const el = document.querySelector("#" + elementId);
+      this.isMenuActive = false;
+      el.scrollIntoView({ block: "start", inline: "nearest"})
     }
   }
 }

@@ -4,18 +4,15 @@
         <div class="slimelight text-6xl md:text-8xl text-black">mvm</div>
     </div>
     <div class="flex w-full fixed justify-end z-10 pt-10 pb-2 px-10 md:px-20">
-        <button id="menu-btn" class="hamburger block focus:outline-none" :class="{ open: isMenuActive }" @click="isMenuActive = !isMenuActive">
+        <button id="menu-btn" class="hamburger block focus:outline-none" :class="{ open: isMenuActive }" @click="$emit('on-toggle-menu', !isMenuActive)">
             <span class="hamburger-top"></span>
             <span class="hamburger-middle"></span>
             <span class="hamburger-bottom"></span>
         </button>
     </div>
     <div :class="{ hidden: !isMenuActive }" class="relative">
-        <div id="menu" class="fixed flex flex-col items-center justify-center self-end top-0 bottom-0 py-8 -ml-32 space-y-6 font-bold bg-lightYellow sm:w-auto sm:self-center left-0 right-0">
-            <a href="#">Intro</a>
-            <a href="#">Projects</a>
-            <a href="#">Skills</a>
-            <a href="#">Portfolio</a>
+        <div id="menu" class="fixed flex flex-col items-center justify-center self-end top-0 bottom-0 py-8 -ml-32 space-y-6 font-bold bg-lightYellow sm:w-auto sm:self-center left-0 right-0 text-black text-xl">
+            <div v-for="(shortCut, i) in shortCuts" :key="`shortcut-${i+1}`"><span @click="$emit('short-cut', shortCut && shortCut.link)" class="cursor-pointer">{{ shortCut.name }}</span></div>
         </div>
     </div>
   </nav>
@@ -23,16 +20,14 @@
 
 <script>
 export default {
-    data() {
-        return {
-            isMenuActive: false
-        }
+  props: {
+    isMenuActive: {
+      type: Boolean
     },
-    props: {
-        shortCuts: {
-            type: Array
-        }
+    shortCuts: {
+      type: Array
     }
+  }
 
 }
 </script>
