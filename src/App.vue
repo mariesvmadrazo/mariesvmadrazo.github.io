@@ -2,9 +2,9 @@
   <div class="relative w-full h-full select-none">
   <NavBar :short-cuts="shortCuts" :isMenuActive="isMenuActive" @on-toggle-menu="isMenuActive = $event" @short-cut="scrollToElement($event)"></NavBar>
   <div id="about" class="text-black flex flex-col">
-    <div id="hello-wrapper" class="container flex flex-col items-center justify-center w-full px-10 mx-auto py-60 md:flex-row md:px-20">
+    <div id="hello-wrapper" class="container flex flex-col items-center justify-center w-full px-14 mx-auto py-60 md:flex-row md:px-20">
       <div class="intro">
-        <div class="text-4xl">Hello! 😊
+        <div class="text-4xl">Hi! 😊
         </div>
         <div class="text-4xl">I'm Maries Madrazo.</div>
         <div class="text-xl w-70 md:w-80">Electronics engineer turned front-end developer intrigued by food, online games, and good conversations.</div>
@@ -13,7 +13,7 @@
       <img class="w-full" src="./assets/girl-avatar.png" />
     </div>
   </div>
-  <div id="skills" class="flex flex-col items-center justify-center px-12 md:px-48 w-full mx-auto py-60">
+  <div id="skills" class="flex flex-col items-center justify-center px-14 md:px-48 w-full mx-auto py-60">
     <div class="text-2xl">My Skills 🧠</div>
     <div id="front-end-skills" class="text-xl">Front End</div>
     <div class="skills flex flex-wrap text-md justify-center">
@@ -24,7 +24,7 @@
       <div class="skill text-xs md:text-sm tag bg-darkViolet text-white mr-2 mb-2 rounded-3xl flex-shrink-0 capitalize inline-flex flex-row items-center p-1.5 pr-3" v-for="(skill, i) in skills.backEnd" :key="`back-end-skill-${i+1}`"><img class="rounded-full w-8 mr-2 shadow-lg inline" :src="`${publicPath}${skill.img}`" /><span>{{ skill.name }}</span></div>
     </div>
   </div>
-  <div id="portfolio" class="flex flex-col items-center justify-center w-full mx-auto py-60">
+  <div id="portfolio" class="flex flex-col items-center justify-center w-full mx-auto py-60 px-14">
     <div class="text-2xl">Portfolio 💻</div>
     Ongoing . . .
   </div>
