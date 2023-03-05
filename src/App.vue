@@ -2,9 +2,9 @@
   <div class="relative w-full h-full select-none">
   <NavBar :short-cuts="shortCuts" :isMenuActive="isMenuActive" @on-toggle-menu="isMenuActive = $event" @short-cut="scrollToElement($event)"></NavBar>
   <div id="about" class="text-black flex flex-col">
-    <div id="hello-wrapper" class="container flex flex-col items-center justify-center w-full mx-auto my-60 md:flex-row">
+    <div id="hello-wrapper" class="container flex flex-col items-center justify-center w-full px-10 mx-auto py-60 md:flex-row md:px-20">
       <div class="intro">
-        <div class="text-4xl">Hello! <font-awesome-icon icon="fa-hand"></font-awesome-icon>
+        <div class="text-4xl">Hello! 😊
         </div>
         <div class="text-4xl">I'm Maries Madrazo.</div>
         <div class="text-xl w-70 md:w-80">Electronics engineer turned front-end developer intrigued by food, online games, and good conversations.</div>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div id="skills" class="flex flex-col items-center justify-center px-12 md:px-48 w-full mx-auto py-60">
-    <div class="text-2xl">Skills</div>
+    <div class="text-2xl">My Skills 🧠</div>
     <div id="front-end-skills" class="text-xl">Front End</div>
     <div class="skills flex flex-wrap text-md justify-center">
       <div class="skill text-xs md:text-sm tag bg-darkViolet text-white mr-2 mb-2 rounded-3xl flex-shrink-0 capitalize inline-flex flex-row items-center p-1.5 pr-3" v-for="(skill, i) in skills.frontEnd" :key="`front-end-skill-${i+1}`"><img class="rounded-full w-8 mr-2 shadow-lg inline" :src="`${publicPath}${skill.img}`" /><span>{{ skill.name }}</span></div>
@@ -25,12 +25,12 @@
     </div>
   </div>
   <div id="portfolio" class="flex flex-col items-center justify-center w-full mx-auto py-60">
-    <div class="text-2xl">Portfolio</div>
+    <div class="text-2xl">Portfolio 💻</div>
     Ongoing . . .
   </div>
-  <div class="flex flex-col py-4 px-20 w-full bg-darkViolet justify-items-stretch text-white space-y-4 md:space-y-0 md:justify-start md:flex-row">
-    <div class="slimelight text-7xl text-white justify-self-start">mvm</div>
-    <div class="flex flex-col justify-center md:mr-96">
+  <div class="flex flex-col py-4 px-10 w-full bg-darkViolet justify-items-stretch text-white md:justify-start md:flex-row md:px-32">
+    <div class="slimelight text-7xl text-white justify-self-start pb-3 md: pb-0 md:pr-36">mvm</div>
+    <div class="flex flex-col justify-center pb-3 md: pb-0 md:pr-60">
       <div class="text-3xl">Contact Me</div>
       <div class="contact" v-for="(c,i) in contact" :key="`c-${i+1}`">
         <div>
@@ -39,14 +39,14 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col hidden md:block px-36">
+    <div class="flex-col hidden md:block md:mt-0 pl-96">
       <div class="flex flex-col justify-center">
         <div class="flex social cursor-pointer" v-for="(shortCut,i) in shortCuts" :key="`s-${i+1}`">
-          <div class="text-lg" @click="scrollToElement(shortCut.link)">{{ shortCut.name }}</div>
+          <div class="text-xl" @click="scrollToElement(shortCut.link)">{{ shortCut.name }}</div>
         </div>
       </div>
     </div>
-    <div class="flex flex-col align-self-end">
+    <div class="flex flex-col md:ml-auto md:w-1/6">
       <div class="text-3xl">Socials</div>
       <div class="flex justify-center">
         <div class="flex social w-10 overflow-hidden rounded-full" v-for="(s,i) in socials" :key="`s-${i+1}`">
@@ -171,7 +171,7 @@ export default {
 <style>
 #app {
   height: 100%;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

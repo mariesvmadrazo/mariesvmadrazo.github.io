@@ -1,7 +1,7 @@
 <template>
   <nav class="absolute w-full bg-lightYellow flex flex-col">
-    <div class="pt-10 pb-2 px-20 flex">
-        <div class="slimelight text-6xl md:text-8xl text-black">mvm</div>
+    <div class="pt-6 pb-2 px-10 flex md:px-20 md:pt-10">
+        <div class="slimelight text-5xl md:text-8xl text-black">mvm</div>
     </div>
     <div class="flex w-full fixed justify-end z-10 pt-10 pb-2 px-10 md:px-20">
         <button id="menu-btn" class="hamburger block focus:outline-none" :class="{ open: isMenuActive }" @click="$emit('on-toggle-menu', !isMenuActive)">
