@@ -49,7 +49,7 @@
     <div class="flex flex-col md:ml-auto md:w-1/6">
       <div class="text-3xl">Socials</div>
       <div class="flex justify-center">
-        <div class="flex social w-10 overflow-hidden rounded-full" v-for="(s,i) in socials" :key="`s-${i+1}`">
+        <div class="flex social w-10 overflow-hidden rounded-full mr-1" v-for="(s,i) in socials" :key="`s-${i+1}`">
           <a :href="s.link" target="_blank">
             <img class="w-full" :src="`${publicPath}${s.img}`"/>
           </a>
