@@ -86,7 +86,7 @@ export default {
   transition: 1s;
 }
 .slide-enter-from {
-  transform: translate(0, 100%);
+  transform: translate(0, -100%);
 }
 .slide-leave-to {
   transform: translate(0, -100%);
