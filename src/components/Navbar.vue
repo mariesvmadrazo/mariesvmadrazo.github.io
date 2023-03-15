@@ -10,10 +10,13 @@
             <span class="hamburger-bottom"></span>
         </button>
     </div>
-    <div id="menu" class="fixed flex flex-col items-center justify-center top-0 bottom-0 left-0 right-0 space-y-6 text-black font-bold text-2xl bg-lightYellow" :class="{ hidden: !isMenuActive }">
-      <div v-for="(shortCut, i) in shortCuts" :key="`shortcut-${i+1}`" @click="$emit('short-cut', shortCut && shortCut.link)" class="cursor-pointer">{{ shortCut.name }}
+    <!-- <div id="menu" class="fixed flex flex-col items-center justify-center top-0 bottom-0 left-0 right-0 space-y-6 text-black font-bold text-2xl bg-lightYellow" :class="{ hidden: !isMenuActive }"> -->
+    <transition-group name="slide">
+      <div id="menu" class="fixed flex flex-col items-center justify-center top-0 bottom-0 left-0 right-0 space-y-6 text-black font-bold text-2xl bg-lightYellow" v-if="isMenuActive">
+        <div v-for="(shortCut, i) in shortCuts" :key="`shortcut-${i+1}`" @click="$emit('short-cut', shortCut && shortCut.link)" class="cursor-pointer">{{ shortCut.name }}
+        </div>
       </div>
-    </div>
+    </transition-group>
   </nav>
 </template>
 
@@ -76,5 +79,16 @@ export default {
 
 .open .hamburger-bottom {
   transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: 1s;
+}
+.slide-enter-from {
+  transform: translate(0, 100%);
+}
+.slide-leave-to {
+  transform: translate(0, -100%);
 }
 </style>
